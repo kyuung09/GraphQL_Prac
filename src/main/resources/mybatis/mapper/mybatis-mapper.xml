@@ -10,7 +10,23 @@
         user_name
     </sql>
 
-    <insert id="createUser" parameterType="com.example.graphql_prac_.DTO.UserResponseDto">
+    <select id="getUserById" resultType="com.example.graphql_prac_.DTO.UserResponseDto">
+        SELECT user_id, user_email, user_password, user_name
+        FROM user
+        WHERE user_id = #{user_id}
+    </select>
+
+
+    <select id="getUsers" resultType="com.example.graphql_prac_.DTO.UserResponseDto">
+        SELECT user_id, user_email, user_password, user_name
+        FROM user
+    </select>
+
+
+    <insert id="createUser" parameterType="com.example.graphql_prac_.DTO.UserResponseDto" useGeneratedKeys = "true" keyProperty="user_id">
+        <selectKey keyProperty="user_id" resultType="Integer" order="AFTER">
+            select user_id FROM user
+        </selectKey>
         INSERT INTO user(
                          <include refid="userColumns"/>
         )VALUES (
@@ -20,7 +36,15 @@
         )
     </insert>
 
-    <select id="getUsers" resultType="com.example.graphql_prac_.DTO.UserResponseDto">
-        SELECT user_id, user_email, user_password, user_name FROM user
-    </select>
+    <update id="updateUser">
+        UPDATE user
+        SET user_email =#{user_email}
+        WHERE user_id = #{user_id}
+    </update>
+
+    <delete id="deleteUser">
+        DELETE FROM user
+        WHERE user_id = #{user_id}
+    </delete>
+
 </mapper>

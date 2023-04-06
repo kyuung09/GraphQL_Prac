@@ -9,5 +9,8 @@ import java.util.List;
 @Mapper
 public interface UserRepository {
     void createUser(UserRequestDto userRequestDto);
+    void updateUser(UserRequestDto userRequestDto);
+    void deleteUser(UserRequestDto userRequestDto);
     List<UserResponseDto> getUsers();
+    UserResponseDto getUserById(UserRequestDto userRequestDto);
 }

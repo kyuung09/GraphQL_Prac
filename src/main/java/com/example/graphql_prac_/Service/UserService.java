@@ -6,6 +6,11 @@ import com.example.graphql_prac_.DTO.UserRequestDto;
 import java.util.List;
 
 public interface UserService {
-    void createUser(UserRequestDto userRequestDto);
+
     List<UserResponseDto> getUsers();
+    UserResponseDto getUserById(UserRequestDto userRequestDto);
+    void createUser(UserRequestDto userRequestDto);
+    void updateUser(UserRequestDto userRequestDto);
+    void deleteUser(UserRequestDto userRequestDto);
+
 }
