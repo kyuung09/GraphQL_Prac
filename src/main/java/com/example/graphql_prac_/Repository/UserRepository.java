@@ -13,4 +13,5 @@ public interface UserRepository {
     void deleteUser(UserRequestDto userRequestDto);
     List<UserResponseDto> getUsers();
     UserResponseDto getUserById(UserRequestDto userRequestDto);
+    UserResponseDto getUserById(Integer user_id);
 }

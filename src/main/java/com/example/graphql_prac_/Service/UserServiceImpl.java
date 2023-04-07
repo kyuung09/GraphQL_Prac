@@ -26,19 +26,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUser(UserRequestDto userRequestDto){
+    public UserResponseDto createUser(UserRequestDto userRequestDto){
         userRepository.createUser(userRequestDto);
+        UserResponseDto userResponseDto = userRepository.getUserById(userRequestDto.getUser_id());
+        return userResponseDto;
     }
 
     @Override
-    public void updateUser(UserRequestDto userRequestDto) {
+    public UserResponseDto updateUser(UserRequestDto userRequestDto) {
         userRepository.updateUser(userRequestDto);
+        UserResponseDto userResponseDto = userRepository.getUserById(userRequestDto.getUser_id());
+        return userResponseDto;
     }
 
     @Override
-    public void deleteUser(UserRequestDto userRequestDto) {
+    public UserResponseDto deleteUser(UserRequestDto userRequestDto) {
+        UserResponseDto userResponseDto = userRepository.getUserById(userRequestDto.getUser_id());
         userRepository.deleteUser(userRequestDto);
+        return userResponseDto;
     }
-
-
 }
