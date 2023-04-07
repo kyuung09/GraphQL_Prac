@@ -24,9 +24,6 @@
 
 
     <insert id="createUser" parameterType="com.example.graphql_prac_.DTO.UserResponseDto" useGeneratedKeys = "true" keyProperty="user_id">
-        <selectKey keyProperty="user_id" resultType="Integer" order="AFTER">
-            select user_id FROM user
-        </selectKey>
         INSERT INTO user(
                          <include refid="userColumns"/>
         )VALUES (

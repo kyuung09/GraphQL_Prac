@@ -2,17 +2,23 @@ type User {
     user_id : Int!,
     user_name: String!,
     user_password: String!,
-    user_email: String
+    user_email: String!
 }
 
 type Query {
-    getUserById(user_id:Int):User,
+    getUserById(userRequestDtoInfo : UserRequestDto!):User,
     getUsers: [User],
 }
 
 type Mutation{
-    createUser(user_name:String!, user_password:String!, user_email:String!):User,
-    updateUser(user_id:Int!, user_email:String!):User,
-    deleteUser(user_id:Int!):User
+    createUser(userRequestDtoInfo : UserRequestDto!):User,
+    updateUser(userRequestDtoInfo : UserRequestDto!):User,
+    deleteUser(userRequestDtoInfo : UserRequestDto!):User,
 }
 
+input UserRequestDto {
+    user_id : Int,
+    user_name : String,
+    user_password : String,
+    user_email : String
+}
